@@ -1,5 +1,8 @@
 [package]
 name = "assert-deadlock"
-version = "0.1.0"
+version = "1.0.0-alpha.1"
 authors = ["Tamme Schichler <tamme@schichler.dev>"]
 edition = "2018"
+
+[dev-dependencies]
+assert-panic = "=1.0.0-preview.1"
