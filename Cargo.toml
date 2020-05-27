@@ -1,0 +1,5 @@
+[package]
+name = "assert-deadlock"
+version = "0.1.0"
+authors = ["Tamme Schichler <tamme@schichler.dev>"]
+edition = "2018"
