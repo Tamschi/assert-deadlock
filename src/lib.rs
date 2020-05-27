@@ -36,22 +36,23 @@
 ///
 /// assert_panic!(
 ///     assert_deadlock!(
-///         { Box::leak(Box::new(&mutex.lock())); },
+///         { },
 ///         Duration::from_secs(1),
 ///     ),
 ///     &str,
 ///     "assert_deadlock! expression returned.",
 /// );
-///
+/// 
+/// let guard = mutex.lock();
 /// assert_deadlock!(
-///     { Box::leak(Box::new(&mutex.lock())); },
+///     { Box::leak(Box::new(mutex.lock())); },
 ///     Duration::from_secs(1),
 /// );
 /// ```
 ///
 /// # Details
 ///
-/// If this macro panics, effects of `$stmt` are reliably observable.
+/// If this macro panics from `$stmt` completing, effects of `$stmt` are reliably observable.
 ///
 /// If `$stmt` panics, that panic is propagated:
 ///
@@ -116,16 +117,4 @@ macro_rules! assert_deadlock {
             // Still locked, all good.
         };
     }};
-}
-
-#[cfg(test)]
-#[test]
-fn test() {
-    use {crate::assert_deadlock, assert_panic::assert_panic, std::time::Duration};
-
-    assert_panic!(
-        assert_deadlock!(panic!("Inner panic!"), Duration::from_secs(1),),
-        &str,
-        "Inner panic!",
-    );
 }
