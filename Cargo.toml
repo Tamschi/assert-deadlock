@@ -5,4 +5,4 @@ authors = ["Tamme Schichler <tamme@schichler.dev>"]
 edition = "2018"
 
 [dev-dependencies]
-assert-panic = "=1.0.0-preview.1"
+assert-panic = "1.0.0"
